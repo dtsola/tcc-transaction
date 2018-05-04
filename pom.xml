@@ -19,10 +19,10 @@
     </modules>
 
     <properties>
-        <springframework.version>3.2.12.RELEASE</springframework.version>
+        <springframework.version>5.0.4.RELEASE</springframework.version>
 
-        <java.src.version>1.6</java.src.version>
-        <java.target.version>1.6</java.target.version>
+        <java.src.version>1.8</java.src.version>
+        <java.target.version>1.8</java.target.version>
         <project.encoding>UTF-8</project.encoding>
 
         <repo.internal.snapshots.url>http://repo1.maven.org/maven2
@@ -295,6 +295,7 @@
         </dependencies>
     </dependencyManagement>
 
+	<!--
     <repositories>
         <repository>
             <id>tcc-transaction-internal-snapshots</id>
@@ -318,7 +319,6 @@
                 <enabled>true</enabled>
             </releases>
         </repository>
-        <!-- no snapshot allowed for external repositories! -->
         <repository>
             <id>tcc-transaction-third-party</id>
             <name>cache server for external repositories</name>
@@ -359,7 +359,6 @@
                 <enabled>true</enabled>
             </releases>
         </pluginRepository>
-        <!-- no snapshot allowed for external repositories -->
         <pluginRepository>
             <id>tcc-transaction-central-cache</id>
             <name>cache to external repositories</name>
@@ -372,6 +371,70 @@
             <id>central</id>
             <name>Platform proxy to external repositories</name>
             <url>${repo.proxy.url}</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+   <distributionManagement>
+        <repository>
+            <id>repo.releases</id>
+            <name>internal corporate repository</name>
+            <url>${repo.internal.releases.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>repo.snapshots</id>
+            <name>internal corporate snapshots repository</name>
+            <url>${repo.internal.snapshots.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
+    -->
+    
+    
+    <!-- 发布路径 -->
+    <distributionManagement>
+        <repository>
+            <id>QQD Repository</id>
+            <name>QQD Repository</name>
+            <url>http://nexus.qianqu.io/nexus/content/repositories/QQD/</url>
+        </repository>
+        <snapshotRepository>
+            <id>Snapshot Repository</id>
+            <name>Snapshot Repository</name>
+            <url>http://nexus.qianqu.io/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <!-- 仓库地址 -->
+    <repositories>
+        <repository>
+            <id>qianqu</id>
+            <name>nexus.qianqu.io</name>
+            <url>http://nexus.qianqu.io/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>qianqu</id>
+            <name>nexus.qianqu.io</name>
+            <url>http://nexus.qianqu.io/nexus/content/groups/public/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -448,17 +511,5 @@
 
     </build>
 
-    <distributionManagement>
-        <repository>
-            <id>repo.releases</id>
-            <name>internal corporate repository</name>
-            <url>${repo.internal.releases.url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>repo.snapshots</id>
-            <name>internal corporate snapshots repository</name>
-            <url>${repo.internal.snapshots.url}</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 </project>
