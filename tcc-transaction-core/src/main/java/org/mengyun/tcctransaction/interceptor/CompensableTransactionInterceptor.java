@@ -1,8 +1,9 @@
 package org.mengyun.tcctransaction.interceptor;
 
-import com.alibaba.fastjson.JSON;
+import java.lang.reflect.Method;
+import java.util.Set;
+
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.mengyun.tcctransaction.NoExistedTransactionException;
@@ -19,15 +20,17 @@ import org.mengyun.tcctransaction.utils.CompensableMethodUtils;
 import org.mengyun.tcctransaction.utils.ReflectionUtils;
 import org.mengyun.tcctransaction.utils.TransactionUtils;
 
-import java.lang.reflect.Method;
-import java.util.Set;
+import com.alibaba.fastjson.JSON;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by changmingxie on 10/30/15.
  */
 public class CompensableTransactionInterceptor {
 
-    static final Logger logger = Logger.getLogger(CompensableTransactionInterceptor.class.getSimpleName());
+    static final Logger logger = LoggerFactory.getLogger(CompensableTransactionInterceptor.class.getSimpleName());
 
     private TransactionManager transactionManager;
 

@@ -1,20 +1,21 @@
 package org.mengyun.tcctransaction;
 
-import org.apache.log4j.Logger;
-import org.mengyun.tcctransaction.api.TransactionContext;
-import org.mengyun.tcctransaction.api.TransactionStatus;
-import org.mengyun.tcctransaction.common.TransactionType;
-
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
+
+import org.mengyun.tcctransaction.api.TransactionContext;
+import org.mengyun.tcctransaction.api.TransactionStatus;
+import org.mengyun.tcctransaction.common.TransactionType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by changmingxie on 10/26/15.
  */
 public class TransactionManager {
 
-    static final Logger logger = Logger.getLogger(TransactionManager.class.getSimpleName());
+    static final Logger logger = LoggerFactory.getLogger(TransactionManager.class.getSimpleName());
 
     private TransactionRepository transactionRepository;
 

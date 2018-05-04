@@ -1,17 +1,20 @@
 package org.mengyun.tcctransaction.repository;
 
-import org.apache.log4j.Logger;
 import org.mengyun.tcctransaction.Transaction;
 import org.mengyun.tcctransaction.repository.helper.ExpandTransactionSerializer;
 import org.mengyun.tcctransaction.repository.helper.JedisCallback;
 import org.mengyun.tcctransaction.repository.helper.RedisHelper;
 import org.mengyun.tcctransaction.serializer.JdkSerializationSerializer;
 import org.mengyun.tcctransaction.serializer.ObjectSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.Pipeline;
 
 import javax.transaction.xa.Xid;
+
 import java.util.*;
 
 /**
@@ -24,8 +27,8 @@ import java.util.*;
  */
 public class RedisTransactionRepository extends CachableTransactionRepository {
 
-    static final Logger logger = Logger.getLogger(RedisTransactionRepository.class.getSimpleName());
-
+    static final Logger logger = LoggerFactory.getLogger(RedisTransactionRepository.class.getSimpleName());
+    
     private JedisPool jedisPool;
 
     private String keyPrefix = "TCC:";

@@ -2,7 +2,6 @@ package org.mengyun.tcctransaction.recover;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.log4j.Logger;
 import org.mengyun.tcctransaction.OptimisticLockException;
 import org.mengyun.tcctransaction.Transaction;
 import org.mengyun.tcctransaction.TransactionRepository;
@@ -13,13 +12,15 @@ import org.mengyun.tcctransaction.support.TransactionConfigurator;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by changmingxie on 11/10/15.
  */
 public class TransactionRecovery {
 
-    static final Logger logger = Logger.getLogger(TransactionRecovery.class.getSimpleName());
+    static final Logger logger = LoggerFactory.getLogger(TransactionRecovery.class.getSimpleName());
 
     private TransactionConfigurator transactionConfigurator;
 
